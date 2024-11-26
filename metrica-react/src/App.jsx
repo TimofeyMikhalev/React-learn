@@ -1,14 +1,17 @@
 import React from "react"
-import Header from "./Header"
-import Images from "./Images"
+import HeroSection from "./components/HeroSection/HeroSection"
+import AboutSection from "./components/AboutSection/AboutSection"
+import ProjectSection from "./components/ProjectSection/ProjectSection"
+
+
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Images />
-      <Images />
-    </div>
+    <>
+      <HeroSection />
+      <AboutSection />
+      <ProjectSection />
+    </>
   )
 }
 
