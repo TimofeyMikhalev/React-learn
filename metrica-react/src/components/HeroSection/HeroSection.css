@@ -1,0 +1,21 @@
+.hero-section {
+    margin-bottom: 150px;
+}
+
+.imageBg {
+    background-image: url('/src/assets/bg.jpg');
+    width: 1150px;
+    height: 500px;
+    
+    position: relative;
+}
+
+.textBg {
+    position: absolute;
+    width: 450px;
+    bottom: 40px;
+    left: 40px;
+    font-size: 20px;
+    line-height: 27px;
+    color: #ffffff;
+}

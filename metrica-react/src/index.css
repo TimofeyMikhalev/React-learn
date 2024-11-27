@@ -1,0 +1,9 @@
+body {
+  font-family: "Manrope", sans-serif;
+  font-weight: 400;
+}
+
+.container {
+    width: 1150px;
+    margin: 0 auto;
+}

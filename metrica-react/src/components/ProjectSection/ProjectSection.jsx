@@ -6,11 +6,14 @@ import Button from "../Button/Button"
 function ProjectSection() {
     return (
       <div>
-        <Heading />
+        <Heading 
+          level="h2"
+          text="ПРОЕКТЫ"
+        />
         <ProjecCard />
         <ProjecCard />
         <ProjecCard />
-        <Button />
+        <Button text="Смотреть все проекты" />
       </div>
     )
 }
