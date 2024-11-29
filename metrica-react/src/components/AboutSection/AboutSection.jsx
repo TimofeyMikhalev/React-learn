@@ -2,7 +2,7 @@ import React from "react"
 import Button from "../Button/Button"
 import Heading from "../Heading/Heading"
 
-function AboutSection() {
+export default function AboutSection() {
     return (
       <div>
         <Heading 
@@ -15,4 +15,3 @@ function AboutSection() {
     )
 }
 
-export default AboutSection
