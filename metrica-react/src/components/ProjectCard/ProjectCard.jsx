@@ -2,8 +2,6 @@ import React from "react"
 import project1 from  '../../assets/project1.jpg'
 
 
-
-
 function ProjecCard(props) {
   return (
     <div>

@@ -1,8 +1,13 @@
 import React from "react";
 
-function Button() {
+function Button({ text, onClick }) {
     return (
-        <button>Посмотреть услуги</button>
+        <>
+            <button onClick={onClick}>Посмотреть услуги</button>
+
+            <button>{text}</button>
+        </>
+
     )
 }
 
