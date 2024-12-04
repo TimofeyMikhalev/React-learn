@@ -1,11 +1,11 @@
 import React from "react";
 
-function Button({ text, onClick }) {
+function Button({ text, onClick, isDidabled }) {
     return (
         <>
-            <button onClick={onClick}>Посмотреть услуги</button>
+            {/* <button onClick={onClick}></button> */}
 
-            <button>{text}</button>
+            <button disabled={isDidabled} onClick={onClick}>{text}</button>
         </>
 
     )
