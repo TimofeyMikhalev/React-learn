@@ -1,11 +1,13 @@
 import React from "react";
+import './Counter.css'
 
-function Counter({ value }) {
+function Counter({ value, isDanger, index }) {
+    const classnames = isDanger ? 'counter_danger' : ''
+ 
     return (
-        <p>
+        <p className={classnames}>
             {value}
         </p>
-
     )
 }
 
