@@ -15,6 +15,19 @@ function App() {
   const [counter, setCounter] = useState(INITAL_COUNTER)
   const [logs, setLogs] = useState([])
 
+  // let logs = [
+  //   {
+  //     action: 'minus',
+  //     prevValue: 0,
+  //     value: -1
+  //   }, 
+  //   {
+  //     action: 'plus',
+  //     prevValue: 1,
+  //     value: 0
+  //   }, 
+  // ]
+
   function handleMinusBtnClick() {
     const newCounter = counter - COUNTER_STEP
 
