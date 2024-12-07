@@ -1,4 +1,5 @@
- import HeroSection from "./components/HeroSection/HeroSection"
+import { v4 as uuidv4 } from 'uuid';
+import HeroSection from "./components/HeroSection/HeroSection"
 import AboutSection from "./components/AboutSection/AboutSection"
 import ProjectSection from "./components/ProjectSection/ProjectSection"
 import Button from "./components/Button/Button"
@@ -10,36 +11,42 @@ const INITAL_COUNTER = 0
 const COUNTER_STEP = 1
 const MIN_COUNTER_VALUE = -5
 const MAX_COUNTER_VALUE = 5
+const USER_ACTIONS = {
+  MINUS: 'minus',
+  PLUS: 'plus'
+}
 
 function App() {
   const [counter, setCounter] = useState(INITAL_COUNTER)
   const [logs, setLogs] = useState([])
 
-  // let logs = [
-  //   {
-  //     action: 'minus',
-  //     prevValue: 0,
-  //     value: -1
-  //   }, 
-  //   {
-  //     action: 'plus',
-  //     prevValue: 1,
-  //     value: 0
-  //   }, 
-  // ]
-
   function handleMinusBtnClick() {
-    const newCounter = counter - COUNTER_STEP
 
-    setCounter(newCounter)
-    setLogs([...logs, newCounter])
+    const newValue = counter - COUNTER_STEP
+
+    const log = {
+      id: uuidv4(),
+      action: USER_ACTIONS.MINUS, 
+      prevValue: counter,
+      value: counter - COUNTER_STEP
+    }
+
+    setCounter(newValue)
+    setLogs([...logs, log])
   }
 
   function handlePlusBtnClick() {
     const newCounter = counter + COUNTER_STEP
 
+    const log = {
+      id: uuidv4(),
+      action: USER_ACTIONS.PLUS, 
+      prevValue: counter,
+      value: newCounter
+    }
+
     setCounter(newCounter)
-    setLogs([...logs, newCounter])
+    setLogs([...logs, log])
   } 
 
   function isMinusBtnDesable() {
