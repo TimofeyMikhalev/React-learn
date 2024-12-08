@@ -2,48 +2,100 @@ import React, {useState} from "react";
 import Person from "./components/personal";
 
 
-const NAME = 'Tima'
-const SURNAME = 'Mikhal'
-const AGE = 25
-const SEX = 'man'
-
 
 
 function BIO() {
 
-    const [age, setAge] = useState('');
-    const ageAsNumber = Number(age);
-
-    const [person, setState] = useState({
-        name: NAME,
-        surname: SURNAME,
-        age: ageAsNumber,
-        sex: SEX,
+    const [person, setPerson] = useState({
+        name: '',
+        surname: '',
+        age: 0,
+        sex: '',
         interests: ['youtube', 'basketbal']
     })
+
+    const [form, setForm] = useState({
+        name: '',
+        surname: '',
+        age: 0
+    })
+
+    const handleNameInputChange = (e) => {
+        setForm({
+            ...form,
+            name: e.target.value
+        })
+    }
+    function handleSetNameBtnClick() {
+        if(!form.name) {
+            return
+        }
+
+        setPerson({
+            ...person,
+           name: form.name  
+        })
+    }
+
+    function handleSurnameInputChange(e) {
+        setForm({
+            ...form,
+            surname: e.target.value
+        })
+    }
+    function handleSetSurnameBtnClick() {
+        if(!form.surname) {
+            return
+        }
+
+        setPerson({
+            ...person,
+            surname: form.surname
+        })
+    }
+
+
+    function handleAgeInputChange(e) {
+        setForm({
+            ...form,
+            age: e.target.value
+        })
+    }
+    function handleAgeBtnClick() {
+        if(!form.age) {
+            return
+        }
+
+        setPerson({
+            ...person,
+            age: parseInt(form.age)
+        })
+    }
+    
 
     return (
         <div>
             <label>
-                Name: <input name="myName" /> 
-                <button>
+                Name: <input type="text" name="myName" value={form.name} onChange={handleNameInputChange}/> 
+                <button onClick={handleSetNameBtnClick}>
                     Write Name
                 </button>
             </label>
             <hr />
             <label>
-                Surname: <input name="mySurname" />
-                <button>
+                Surname: <input type="text" name="mySurname" value={form.surname} onChange={handleSurnameInputChange} />
+                <button onClick={handleSetSurnameBtnClick}>
                     Write Surname
                 </button>
             </label>
 
             <hr />
             <label>
-                Age: <input name="myAge" type="number" onChange={e => setAge(e.target.value)}/>
-                <button onClick={() => setAge(ageAsNumber)}>
+                Age: <input value={form.age} name="age" type="number" onChange={handleAgeInputChange}/>
+                <button onClick={handleAgeBtnClick}>
                     Write Age
                 </button>
+                
             </label>
        
             <hr />
