@@ -1,115 +1,101 @@
 import React, {useState} from "react";
-import Person from "./components/personal";
-
-
 
 
 function BIO() {
-
     const [person, setPerson] = useState({
-        name: '',
-        surname: '',
+        name: 'Tima',
+        surname: 'Mikhalev',
         age: 0,
-        sex: '',
-        interests: ['youtube', 'basketbal']
+        sex: 'man',
+        interests: ['']
     })
 
     const [form, setForm] = useState({
         name: '',
         surname: '',
-        age: 0
+        age: 0,
+        sex: '',
+        interests: ''
     })
 
-    const handleNameInputChange = (e) => {
+    const [error, setError] = useState(false)
+
+
+    function handleInputChange(e) {
+        const { name, value } = e.target
+
         setForm({
             ...form,
-            name: e.target.value
+            [name]: value
         })
     }
-    function handleSetNameBtnClick() {
-        if(!form.name) {
+    function handleBtnClick(key)  {
+        let value = form[key]
+
+        if(!value) {
+            setError(true)
             return
+        }
+
+        setError(false)
+
+       if(Array.isArray(person[key])) {
+            value = [...person[key], form[key]]
         }
 
         setPerson({
             ...person,
-           name: form.name  
-        })
+            [key]: value
+        }) 
     }
 
-    function handleSurnameInputChange(e) {
-        setForm({
-            ...form,
-            surname: e.target.value
-        })
-    }
-    function handleSetSurnameBtnClick() {
-        if(!form.surname) {
-            return
-        }
-
-        setPerson({
-            ...person,
-            surname: form.surname
-        })
-    }
-
-
-    function handleAgeInputChange(e) {
-        setForm({
-            ...form,
-            age: e.target.value
-        })
-    }
-    function handleAgeBtnClick() {
-        if(!form.age) {
-            return
-        }
-
-        setPerson({
-            ...person,
-            age: parseInt(form.age)
-        })
-    }
-    
-
+     
     return (
         <div>
             <label>
-                Name: <input type="text" name="myName" value={form.name} onChange={handleNameInputChange}/> 
-                <button onClick={handleSetNameBtnClick}>
+                Name: <input type="text" name="name" value={form.name} onChange={handleInputChange}/> 
+                <button onClick={() => handleBtnClick('name')}>
                     Write Name
                 </button>
             </label>
             <hr />
             <label>
-                Surname: <input type="text" name="mySurname" value={form.surname} onChange={handleSurnameInputChange} />
-                <button onClick={handleSetSurnameBtnClick}>
+                Surname: <input type="text" name="surname" value={form.surname} onChange={handleInputChange} />
+                <button onClick={() => handleBtnClick('surname')}>
                     Write Surname
                 </button>
             </label>
 
             <hr />
             <label>
-                Age: <input value={form.age} name="age" type="number" onChange={handleAgeInputChange}/>
-                <button onClick={handleAgeBtnClick}>
+                Age: <input value={form.age} name="age" type="number" onChange={handleInputChange} />
+                <button onClick={() => handleBtnClick('age')}>
                     Write Age
                 </button>
                 
             </label>
-       
             <hr />
             <label>
-                Sex: <input name="mySex" />
-                <button>
+                <p>
+                    Sex:
+                    <label>
+                        <input type="radio" name="sex" value="man" checked={form.sex === 'man'} onChange={handleInputChange}/>
+                        Man
+                    </label>
+                    <label>
+                        <input type="radio" name="sex" value="woman" checked={form.sex === 'woman'} onChange={handleInputChange} />
+                        Woman
+                    </label>
+                </p>
+                <button onClick={() => handleBtnClick('sex')}>
                     Write Sex
                 </button>
             </label>
             <hr />
             <label>
-                Interests: <input name="myHobby" />
-                <button>
-                    Write Hobby
+                Interest: <input type="text" name="interests" value={form.interest} onChange={handleInputChange} />
+                <button onClick={() => handleBtnClick('interests')}>
+                    Write Interests
                 </button>
             </label>
             <hr />
@@ -117,11 +103,15 @@ function BIO() {
             <p>Name: {person.name}</p>
             <p>Surname: {person.surname}</p>
             <p>Age: {person.age}</p>
+
             <p>Sex: {person.sex}</p>
-            <p>Hobby:</p>
-            <div>{person.interests.map(item => (
-                <p key={item}>{item}</p>
-            ))}</div>
+            <p>Interest:</p>
+            
+            <div>
+                {person.interests.map(interest => (
+                    <p key={interest}>{interest}</p>
+                ))}
+            </div>
         </div>
     )
 }
