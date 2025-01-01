@@ -4,10 +4,12 @@ import './index.css'
 import './reset.css'
 import BIO from './BIO.jsx'
 import Regestration from './Regestracia.jsx'
+import Start from './Start.jsx'
 
 const root = createRoot(document.getElementById('root'))
 const rootTwo = createRoot(document.getElementById('rootTwo'))
 const rootThree = createRoot(document.getElementById('rootThree'))
+const rootFour = createRoot(document.getElementById('rootThree'))
 
 // root.render(
 //   <App />
@@ -17,6 +19,10 @@ const rootThree = createRoot(document.getElementById('rootThree'))
 //   <BIO />
 // )
 
-rootThree.render(
-  <Regestration />
+// rootThree.render(
+//   <Regestration />
+// )
+
+rootFour.render(
+  <Start />
 )
