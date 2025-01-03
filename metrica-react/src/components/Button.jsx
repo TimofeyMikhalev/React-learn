@@ -1,9 +1,17 @@
-import '../components/Button/Button.css'
+import classes from '../components/Button/Button.module.css'
 
-export default function Button({ children, buttonClick }) {
 
+
+export default function Button({ children, isActive, ...props }) {
+
+    console.log(classes)
 
     return (
-        <button className='button' onClick={buttonClick}>{ children }</button>
+        <>
+            <button {...props} className={isActive ? `${classes.button} ${classes.active}` : classes.button}>
+                {children}
+            </button>
+        </>
+
     )
 }

@@ -13,3 +13,10 @@ export const ways = [
     }
 
 ]
+
+
+export const differences = {
+    way: 'Узконаправленный подход',
+    eazy: 'Доступность обучения',
+    program: 'Концентрация знаний'
+}

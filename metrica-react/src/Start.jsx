@@ -1,44 +1,35 @@
-import Header from "./components/Header"
-import WayToTeach from "./components/WayToTeach"
-import Button  from "./components/Button"
-
-import { ways } from '../data'
-
+import Header from "./components/Header/Header"
+import TeaachingSection from "./components/TeachingSection"
+import DifferencisSection from "./components/DifferencisSection"
+import IntroSection from "./components/introSection"
+import TabsSection from "./components/TabsSection"
+import FeedbackSection from "./components/FittbackSection"
+import { useState } from "react"
+import EffectSection from "./components/EffectSection"
 
 export default function Start() {
-    let content = 'Нажми на кнопку'
-    
-    console.log('App Component Render')
-    
-    function handleClick(type) {
-        console.log('button click', type)
-        content = type
-    }
+    const [tab, setTab] = useState('effect')
 
     return (
-        <div>
+        <>
             <Header />
             <main>
-                <section>
-                    <h3>Нащ подход: </h3>
+                <IntroSection />
 
-                    <ul>
-                        <WayToTeach title={ways[0].title} description={ways[0].description} />
-                        <WayToTeach { ...ways[1] } />
-                        <WayToTeach { ...ways[2] } />
-                    </ul>
-                </section>
-                <section>
-                    <h3>Сколько зарабатывают frontend-разработчики?</h3>
-                    <Button buttonClick={() => handleClick('way')}>Подход</Button>
-                    <Button buttonClick={() => handleClick('eazy')}>Доступность</Button>
-                    <Button buttonClick={() => handleClick('program')}>Концентрация</Button>
+                <TabsSection active={tab} onChange={(current) => setTab(current)}/>
 
-                    <p>{content}</p>
-                </section>
+                { tab === 'main' && <>
+                    <TeaachingSection />
+                    <DifferencisSection />
+                </>}
+
+              
+                { tab === 'feedback' && <FeedbackSection /> }
+
+                { tab === 'effect' && <EffectSection/> }
             </main>
          
-        </div>
+        </>
     )
 }
 

@@ -7,3 +7,16 @@ body {
     width: 1150px;
     margin: 0 auto;
 }
+
+.centered {
+  text-align: center;
+}
+
+.control {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  width: 50%;
+  margin-bottom: 1rem;
+}
